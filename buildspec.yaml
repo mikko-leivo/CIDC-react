@@ -15,4 +15,4 @@ phases:
   post_build:
     commands:
       - echo "Tests run succesfully"
-      - aws s3 cp build/ s3://mikko-tilaushistoria/ --recursive
+      - aws s3 sync build/ s3://mikko-tilaushistoria
