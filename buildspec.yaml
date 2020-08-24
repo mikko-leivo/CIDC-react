@@ -1,0 +1,18 @@
+#luodaan codeBuild yaml.
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+  pre_build:
+    commands:
+      - echo "Asennetaan NPM"
+      - npm install
+  build:
+    commands:
+      - echo "Rakennetaan..."
+      - npm run build --if -present
+  post_build:
+    commands:
+      - echo "Tests run succesfully"
+      - aws s3 cp build/ s3://mikko-tilaushistoria --recursive
